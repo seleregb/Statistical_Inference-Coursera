@@ -1,0 +1,110 @@
+---
+title: "The Effect of Vitamin C on Tooth Growth in Guinea Pigs"
+author: "Gbenro Selere"
+date: "August 22, 2015"
+output: pdf_document
+---
+
+# Overiew
+
+In this short report we are going to analyze the `TootGrowth` data of the R data sets package which describes the effect of vitamin C on tooth growth in guinea pigs
+
+The `ToothGrowth` data set consists of 60 observations of 3 variables: `len`, `supp` `dose`
+
+# Exploratory Analysis
+
+
+```{r}
+# Loading the dataset
+library(datasets)
+data("ToothGrowth")
+
+# Viewing the object types in the data
+str(ToothGrowth)
+
+# Dimensions of the dataset
+dim(ToothGrowth)
+
+# sample size n
+length(ToothGrowth$len) #or nrows(ToothGrowth)
+```
+
+# Summary of the data
+
+```{r}
+summary(ToothGrowth)
+
+# table view of the data
+table(ToothGrowth$supp,ToothGrowth$dose)
+```
+```{r, echo=FALSE}
+library(ggplot2)
+ggplot(data=ToothGrowth, aes(x=as.factor(dose), y=len, fill=supp)) +
+    geom_bar(stat="identity") +
+    facet_grid(. ~ supp) +
+    xlab("Dose in miligrams") +
+    ylab("Tooth length") +
+    guides(fill=guide_legend(title="Supplement type"))
+```
+
+As can be seen above, there is a clear positive correlation between the tooth length and the dose levels of Vitamin C, for both delivery methods.
+
+```{r, echo=FALSE}
+ggplot(ToothGrowth, aes(x = factor(dose), y = len, fill = factor(dose)))+
+                  geom_boxplot()+
+                  facet_grid(.~supp)+
+                  labs(title = "Tooth Length vs. Dose  by for OJ & VC",
+                  x = "Doses", y = "Tooth Length")
+```
+
+
+
+# Hypothesis tests to compare tooth growth by dose and supp
+
+Based on the box plot in the section above, it can be seen that OJ looks to be doing better with dose 0.5 and 1 effect on teeth growth than VC. To test this hypothesis we assume that the mean of OJ and VC does not cross zero.
+
+We will be testing on 3 dose levels: 0.5, 1, and 2
+
+* 0.5mg Dose Level
+
+```{r, echo=FALSE, message=FALSE}
+library(magrittr)
+library(dplyr)
+```
+
+```{r, echo=FALSE}
+ojdose0.5 <- ToothGrowth %>% filter(supp=="OJ" & dose=="0.5")
+vcdose0.5 <- ToothGrowth %>% filter(supp=="VC" & dose=="0.5")
+t.test(ojdose0.5$len,vcdose0.5$len)
+```
+
+We are 95% confident that the limits of 1.719057 and 8.780943 actually do contain the difference between the two population means.Because those limts do not contain zero, this confodence interval suggests that it is very possible that the two population means are not equal.
+
+* 1mg  Dose Level
+
+```{r, echo=FALSE}
+ojdose1 <- ToothGrowth %>% filter(supp=="OJ" & dose=="1")
+vcdose1 <- ToothGrowth %>% filter(supp=="VC" & dose=="1")
+t.test(ojdose1$len,vcdose1$len)
+
+```
+
+We are 95% confident that the limits of 2.802148 and 9.057852 actually do contain the difference between the two population means. Because those limts do not contain zero, this confodence interval suggests that it is very possible that the two population means are not equal.
+
+* 2mg Dose Level
+
+```{r, echo=FALSE}
+ojdose2 <- ToothGrowth %>% filter(supp=="OJ" & dose=="2")
+vcdose2 <- ToothGrowth %>% filter(supp=="VC" & dose=="2")
+t.test(ojdose2$len,vcdose2$len)
+```
+
+We are 95% confident that the limits of -3.79807 and 3.63807 actually do contain the difference between the two population means. However, because those limts do contain zero, this confodence interval suggests that it is very possible that the two population means are equal.
+
+# Conclusion
+
+We are 95% confident that dose 0.5 and dose 1 of OJ result in longer tooth length than dose 0.5 and dose 1 of VC. However, at the highest dose of 2, there is no statistically significant difference between the effects of OJ and VC.
+
+# Appendix
+
+The full source code to this report and other files can be found [here]()
