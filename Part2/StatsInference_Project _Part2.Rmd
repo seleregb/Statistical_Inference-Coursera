@@ -89,7 +89,7 @@ From the results shown above we are 95% confident that the limits of -3.79807 an
 
 # Conclusion
 
-We are 95% confident that dose 0.5 and dose 1 of OJ result in longer tooth length than dose 0.5 and dose 1 of VC. However, at the highest dose of 2, there is no statistically significant difference between the effects of OJ and VC.
+In conclusion we are 95% confident that dose 0.5 and dose 1 of OJ result in longer tooth length than dose 0.5 and dose 1 of VC. However, at the highest dose of 2, there is no statistically significant difference between the effects of OJ and VC.
 
 # Appendix
 

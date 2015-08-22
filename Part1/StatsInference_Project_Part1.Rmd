@@ -5,7 +5,7 @@ date: "August 22, 2015"
 output: pdf_document
 ---
 
-## Overview
+# Overview
 
 In this project we will be investigating the exponential distribution in R and comparing it with the Central Limit Theorem. The exponential distribution can be simulated in R with
 `rexp(n, lambda)` where $\lambda$ is the rate parameter. The mean($\mu$) of exponential distribution is $\frac{1}/{\lambda}$ and the standard deviation($\sigma$) is also $\frac{1}/{\lambda}$.
@@ -15,9 +15,9 @@ We would also be Illustrating via simulation and associated explanatory text the
 2. Show how variable the sample is (via variance) and compare it to the theoretical variance of the distribution.
 3. Show that the distribution is approximately normal.
 
-## Simulations
+# Simulations
 
-# Comparison of the sample mean with the theoretical mean of the distribution
+## Comparison of the sample mean with the theoretical mean of the distribution
 
 In the following we will draw 1000 samples of size 40 from an $Exp(\frac{1}{0.2}, \frac{1}{0.2})$ distribution. For each of the 1000 samples we will calculate the mean. Theoretically, this the same as drawing a single sample of size 1000 from the corresponding sampling distribution with $N(\frac{1}{0.2}, \frac{\frac{1}{0.2}}{\sqrt{40}})$.
 
