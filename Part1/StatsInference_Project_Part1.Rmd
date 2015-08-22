@@ -89,4 +89,4 @@ legend(2,0.4,c('Normal','Actual'),cex=0.8,col=c('red','blue'),lty=1)
 
 # Appendix
 
-The full source code to this report and other files can be found [here]()
+The full source code to this report and other files can be found [here](https://github.com/seleregb/Statistical_Inference-Coursera/blob/master/Part1/StatsInference_Project__Part1.R)

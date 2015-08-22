@@ -93,4 +93,4 @@ In conclusion we are 95% confident that dose 0.5 and dose 1 of OJ result in long
 
 # Appendix
 
-The full source code to this report and other files can be found [here]()
+The full source code to this report and other files can be found [here](https://github.com/seleregb/Statistical_Inference-Coursera/blob/master/Part2/StatsInference_Project__Part2.R)
