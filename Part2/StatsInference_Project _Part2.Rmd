@@ -37,6 +37,7 @@ summary(ToothGrowth)
 # table view of the data
 table(ToothGrowth$supp,ToothGrowth$dose)
 ```
+
 ```{r, echo=FALSE}
 library(ggplot2)
 ggplot(data=ToothGrowth, aes(x=as.factor(dose), y=len, fill=supp)) +
@@ -78,7 +79,7 @@ vcdose0.5 <- ToothGrowth %>% filter(supp=="VC" & dose=="0.5")
 t.test(ojdose0.5$len,vcdose0.5$len)
 ```
 
-We are 95% confident that the limits of 1.719057 and 8.780943 actually do contain the difference between the two population means.Because those limts do not contain zero, this confodence interval suggests that it is very possible that the two population means are not equal.
+From the results shown above we are 95% confident that the limits of 1.719057 and 8.780943 actually do contain the difference between the two population means. However because those limts do not contain zero, this confidence interval suggests that it is very possible that the two population means are not equal.
 
 * 1mg  Dose Level
 
@@ -89,7 +90,7 @@ t.test(ojdose1$len,vcdose1$len)
 
 ```
 
-We are 95% confident that the limits of 2.802148 and 9.057852 actually do contain the difference between the two population means. Because those limts do not contain zero, this confodence interval suggests that it is very possible that the two population means are not equal.
+From the results shown above we are 95% confident that the limits of 2.802148 and 9.057852 actually do contain the difference between the two population means. However because those limts do not contain zero,this confidence interval suggests that it is very possible that the two population means are not equal.
 
 * 2mg Dose Level
 
@@ -99,7 +100,7 @@ vcdose2 <- ToothGrowth %>% filter(supp=="VC" & dose=="2")
 t.test(ojdose2$len,vcdose2$len)
 ```
 
-We are 95% confident that the limits of -3.79807 and 3.63807 actually do contain the difference between the two population means. However, because those limts do contain zero, this confodence interval suggests that it is very possible that the two population means are equal.
+From the results shown above we are 95% confident that the limits of -3.79807 and 3.63807 actually do contain the difference between the two population means. However, because those limts do contain zero, this confidence interval suggests that it is very possible that the two population means are equal.
 
 # Conclusion
 
