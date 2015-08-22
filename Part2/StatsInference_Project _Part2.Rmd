@@ -7,26 +7,24 @@ output: pdf_document
 
 # Overiew
 
-In this short report we are going to analyze the `TootGrowth` data of the R data sets package which describes the effect of vitamin C on tooth growth in guinea pigs
-
-The `ToothGrowth` data set consists of 60 observations of 3 variables: `len`, `supp` `dose`
+In this short report we are going to analyze the `TootGrowth` data of the R data sets package which describes the effect of vitamin C on tooth growth in guinea pigs. The `ToothGrowth` data set consists of 60 observations of 3 variables: `len`, `supp` `dose`
 
 # Exploratory Analysis
 
 
-```{r}
+```{r, echo=FALSE}
 # Loading the dataset
 library(datasets)
 data("ToothGrowth")
-
-# Viewing the object types in the data
-str(ToothGrowth)
-
-# Dimensions of the dataset
-dim(ToothGrowth)
-
 # sample size n
 length(ToothGrowth$len) #or nrows(ToothGrowth)
+```
+
+```{r}
+# Viewing the object types in the data
+str(ToothGrowth)
+# Dimensions of the dataset
+dim(ToothGrowth)
 ```
 
 # Summary of the data
@@ -40,17 +38,6 @@ table(ToothGrowth$supp,ToothGrowth$dose)
 
 ```{r, echo=FALSE}
 library(ggplot2)
-ggplot(data=ToothGrowth, aes(x=as.factor(dose), y=len, fill=supp)) +
-    geom_bar(stat="identity") +
-    facet_grid(. ~ supp) +
-    xlab("Dose in miligrams") +
-    ylab("Tooth length") +
-    guides(fill=guide_legend(title="Supplement type"))
-```
-
-As can be seen above, there is a clear positive correlation between the tooth length and the dose levels of Vitamin C, for both delivery methods.
-
-```{r, echo=FALSE}
 ggplot(ToothGrowth, aes(x = factor(dose), y = len, fill = factor(dose)))+
                   geom_boxplot()+
                   facet_grid(.~supp)+
@@ -62,9 +49,7 @@ ggplot(ToothGrowth, aes(x = factor(dose), y = len, fill = factor(dose)))+
 
 # Hypothesis tests to compare tooth growth by dose and supp
 
-Based on the box plot in the section above, it can be seen that OJ looks to be doing better with dose 0.5 and 1 effect on teeth growth than VC. To test this hypothesis we assume that the mean of OJ and VC does not cross zero.
-
-We will be testing on 3 dose levels: 0.5, 1, and 2
+Based on the box plot in the section above, it can be seen that OJ looks to be doing better with dose 0.5 and 1 effect on teeth growth than VC. To test this hypothesis we assume that the mean of OJ and VC does not cross zero.We will be testing on 3 dose levels: 0.5, 1, and 2
 
 * 0.5mg Dose Level
 
